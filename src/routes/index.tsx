@@ -1,17 +1,36 @@
-// src/routes/index.tsx
+import { createBrowserRouter, Outlet } from "react-router-dom";
+import ResponsiveAppBar from "../components/ResponsiveAppBar";
 
-import React from 'react';
-import { Routes, Route } from 'react-router-dom';
-import LoginRegister from '../pages/LoginRegister';
-// Puedes agregar más rutas aquí, como SignUp o Home
 
-const AppRoutes: React.FC = () => {
-  return (
-    <Routes>
-      <Route path="/login" element={<LoginRegister />} />
-      {/* Otras rutas pueden ir aquí */}
-    </Routes>
-  );
-};
 
-export default AppRoutes;
+const routes = createBrowserRouter(
+  [
+
+    {
+      path: "/",
+      element: <>
+        <ResponsiveAppBar />
+        <Outlet />
+      </>,
+      children: [
+        {
+          path: "/Products",
+          index: true,
+          element: <>
+            Hola
+          </>
+        },
+        {
+          path: "/login",
+          element: <>
+            Login
+          </>
+        },
+      ]
+
+    }
+  ]
+);
+
+
+export default routes;
